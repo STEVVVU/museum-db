@@ -43,8 +43,8 @@
       <li><a href="#login-modal" id="login-link" class="text-xl scroll-link" onclick="openModal()">Login</a></li>
 
       <!-- Add Membership Button, hidden by default -->
-      <li><a href="manage-members.html" id="add-membership-btn" class="text-xl scroll-link">Manage Members</a></li>
-      <li><a href="manage-employees.html" id="edit-employee-btn" class="text-xl scroll-link">Manage Employees</a></li>
+      <li><a href="/public/manage-members.html" id="add-membership-btn" class="text-xl scroll-link">Manage Members</a></li>
+      <li><a href="/public/manage-employees.html" id="edit-employee-btn" class="text-xl scroll-link">Manage Employees</a></li>
     </ul>
   </div>
   <div class="navbar-end flex items-center gap-4">
@@ -68,6 +68,8 @@
     <!-- Notifications will be dynamically inserted here -->
   </div>
 </div>
+
+
       <!-- Profile Overlay -->
       <div id="overlay" class="fixed inset-0 bg-black bg-opacity-70 hidden z-40"></div>
 
@@ -114,16 +116,59 @@
         </div>
       </div>
       
+<!-- New Employee Creation Section -->
+<div class="container mx-auto p-6">
+  <h2 class="text-2xl font-bold mb-4 text-center">Create New Employee</h2>
+  <form id="create-employee-form" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="col-span-1">
+          <label for="employee-name" class="block text-sm font-medium">Name</label>
+          <input type="text" id="employee-name" class="input input-bordered w-full bg-gray-700 text-white text-sm" required />
+      </div>
+      <div class="col-span-1">
+          <label for="employee-age" class="block text-sm font-medium">Age</label>
+          <input type="number" id="employee-age" class="input input-bordered w-full bg-gray-700 text-white text-sm" required />
+      </div>
+      <div class="col-span-1">
+          <label for="employee-birthdate" class="block text-sm font-medium">Birthdate</label>
+          <input type="date" id="employee-birthdate" class="input input-bordered w-full bg-gray-700 text-white text-sm" required />
+      </div>
+      <div class="col-span-1">
+          <label for="employee-email" class="block text-sm font-medium">Email</label>
+          <input type="email" id="employee-email" class="input input-bordered w-full bg-gray-700 text-white text-sm" required />
+      </div>
+      <div class="col-span-1">
+          <label for="employee-phone" class="block text-sm font-medium">Phone Number</label>
+          <input type="tel" id="employee-phone" class="input input-bordered w-full bg-gray-700 text-white text-sm" required />
+      </div>
+      <div class="col-span-1">
+          <label for="employee-password" class="block text-sm font-medium">Password</label>
+          <input type="password" id="employee-password" class="input input-bordered w-full bg-gray-700 text-white text-sm" required />
+      </div>
+      <div class="col-span-2">
+          <label for="employee-role" class="block text-sm font-medium">Role</label>
+          <select id="employee-role" class="input input-bordered w-full bg-gray-700 text-white text-sm" required>
+              <option value="Employee">Employee</option>
+              <option value="Supervisor">Supervisor</option>
+              <option value="Manager">Manager</option>
+          </select>
+      </div>
+      <div class="col-span-2 text-center">
+<!-- Button in HTML (make sure it's inside a form to prevent the default submit behavior) -->
+<button id="create-employee-btn" class="btn btn-primary w-full text-sm">Create New Employee</button>
 
-    <!-- Main Content Section -->
-    <div class="container mx-auto p-6">
-        <div id="membership-container" class="overflow-x-auto">
-            <!-- The table will be inserted here by JavaScript -->
-        </div>
+      </div>
+  </form>
+</div>
+
+<!-- Existing Employees Table -->
+<div class="container mx-auto p-6">
+    <div id="membership-container" class="overflow-x-auto">
+        <!-- The table will be inserted here by JavaScript -->
     </div>
+</div>
 
-    <!-- JavaScript for the page -->
-    <script src="/manage-members.js"></script>
-    <script src="/shared.js"></script>
+<!-- JavaScript for the page -->
+<script src="manage-employees.js"></script>
+<script src="shared.js"></script>
 </body>
 </html>
