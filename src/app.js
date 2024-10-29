@@ -7,14 +7,10 @@ const connection = require('./database'); // Import the database connection
 const backendRoutes = require('./backend'); // Importing the backend.js file
 
 const app = express();
-const port = process.env.PORT || 8080; // Use the Azure-provided port or default to 3000
+const port = process.env.PORT || 8080; // Use the Azure-provided port or default to 8080
 
-// Enable CORS for all routes with specific options to allow credentials
-app.use(cors({
-    origin: '*',
-    credentials: true
-}));
-
+// Enable CORS for all origins temporarily
+app.use(cors());
 
 // Middleware to parse cookies
 app.use(cookieParser());
@@ -34,19 +30,25 @@ app.get('/', (req, res) => {
     res.sendFile(filePath);
 });
 
-// Handle requests for missing routes (404 errors)
+// Handle requests for missing routes (404 errors) with an explicit response
 app.use((req, res) => {
-    res.status(404).send('<h1>404 Not Found</h1>');
+    res.status(404).send('<h1>404 Not Found</h1>'); // Explicitly send a 404 status with a message
 });
 
 // Start the server
-app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
-    connection.connect(function (err) {
-        if (err) {
-            console.error('Database connection error:', err);
-        } else {
-            console.log('Database Connected!');
-        }
-    });
+app.listen(port, (err) => {
+    if (err) {
+        console.error('Server startup error:', err);
+        process.exit(1); // Exit if the server fails to start
+    } else {
+        console.log(`Server running on port ${port}`);
+        // Attempt to connect to the database
+        connection.connect((dbErr) => {
+            if (dbErr) {
+                console.error('Database connection error:', dbErr);
+            } else {
+                console.log('Database Connected!');
+            }
+        });
+    }
 });
