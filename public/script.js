@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     checkProfileStatus();
 });
 
+const baseUrl = window.location.hostname === 'localhost' ? 'http://localhost:3000' : '';
 // Function to open the modal
 function openModal() {
     document.getElementById('login-modal').classList.remove('hidden');

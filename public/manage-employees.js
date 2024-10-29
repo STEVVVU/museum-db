@@ -2,18 +2,20 @@ document.addEventListener('DOMContentLoaded', () => {
     checkAccessAndLoadData();
 });
 
+const baseUrl = window.location.hostname === 'localhost' ? 'http://localhost:3000' : '';
+
 async function checkAccessAndLoadData() {
     const token = localStorage.getItem('authToken');
     
     if (!token) {
         alert('You must be logged in to access this page.');
-        window.location.href = "home.html";
+        window.location.href = "/public/src/home.html";
         return;
     }
 
     try {
         // Fetch the profile information first to get the user's role
-        const profileResponse = await fetch('http://localhost:3000/auth/profile', {
+        const profileResponse = await fetch('http://localhost:3000/public/api/auth/profile', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
