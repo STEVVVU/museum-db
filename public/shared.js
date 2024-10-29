@@ -23,7 +23,7 @@ async function checkProfileStatus() {
     }
 
     try {
-        const response = await fetch('http://localhost:3000/auth/profile', {
+        const response = await fetch('${baseUrl}/auth/profile', {
             method: 'GET',
             headers: { 
                 'Content-Type': 'application/json',
@@ -99,7 +99,7 @@ async function toggleProfileMenu() {
         // Fetch and populate user data
         try {
             const token = localStorage.getItem('authToken');
-            const response = await fetch('http://localhost:3000/auth/profile', {
+            const response = await fetch('${baseUrl}/auth/profile', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -161,7 +161,7 @@ async function saveProfileChanges() {
     }
 
     try {
-        const response = await fetch(`http://localhost:3000/auth/profile`, {
+        const response = await fetch(`${baseUrl}/auth/profile`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -237,7 +237,7 @@ async function fetchNotifications() {
     try {
         // Make API call to fetch notifications
         console.log(`Fetching notifications for visitorID: ${visitorID}`);
-        const response = await fetch(`http://localhost:3000/api/notifications?visitorID=${visitorID}`, {
+        const response = await fetch(`${baseUrl}/api/notifications?visitorID=${visitorID}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -323,7 +323,7 @@ async function markNotificationAsChecked(notificationId) {
     }
 
     try {
-        const response = await fetch(`http://localhost:3000/api/notifications/check/${notificationId}`, {
+        const response = await fetch(`${baseUrl}/api/notifications/check/${notificationId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
