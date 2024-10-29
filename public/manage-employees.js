@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     checkAccessAndLoadData();
 });
 
-const baseUrl = window.location.hostname === 'localhost' ? 'http://localhost:3000' : '';
 
 async function checkAccessAndLoadData() {
     const token = localStorage.getItem('authToken');
