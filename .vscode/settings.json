@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/0f40136b-fbde-4bbf-b990-aca9004df75f/resourceGroups/appsvc_linux_centralus_basic/providers/Microsoft.Web/sites/stevvumuseumdatabase",
+    "appService.deploySubpath": "."
+}
