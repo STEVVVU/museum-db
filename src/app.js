@@ -7,7 +7,7 @@ const connection = require('./database'); // Import the database connection
 const backendRoutes = require('./backend'); // Importing the backend.js file
 
 const app = express();
-const port = process.env.PORT || 8080; // Use the Azure-provided port or default to 8080
+const port = process.env.PORT || 8080; // Use the Render-provided port or default to 8080
 
 // Enable CORS for all origins temporarily
 app.use(cors());
@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../public')));
 
 // Register backend routes for /auth endpoints
-app.use(backendRoutes);
+app.use('/api', backendRoutes); // Adjust the path based on your backend.js configuration
 
 // Serve the home page (home.html)
 app.get('/', (req, res) => {
