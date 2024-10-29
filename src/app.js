@@ -7,7 +7,7 @@ const connection = require('./database'); // Import the database connection
 const backendRoutes = require('./backend'); // Importing the backend.js file
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000; // Use the Azure-provided port or default to 3000
 
 // Enable CORS for all routes with specific options to allow credentials
 app.use(cors({
