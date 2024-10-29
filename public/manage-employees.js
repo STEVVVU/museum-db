@@ -9,7 +9,7 @@ async function checkAccessAndLoadData() {
     
     if (!token) {
         alert('You must be logged in to access this page.');
-        window.location.href = "/public/src/home.html";
+        window.location.href = "/public/home.html";
         return;
     }
 
