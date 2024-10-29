@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     checkAccessAndLoadData();
 });
 
+const baseUrl = process.env.REACT_APP_API_BASE_URL || 'http://localhost:3000'; // Dynamically use the deployed URL or fallback to localhost
+
 async function checkAccessAndLoadData() {
     const token = localStorage.getItem('authToken');
     

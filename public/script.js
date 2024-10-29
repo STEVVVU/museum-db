@@ -2,7 +2,8 @@ document.addEventListener('DOMContentLoaded', async function () {
     checkProfileStatus();
 });
 
-const baseUrl = window.location.hostname === 'localhost' ? 'http://localhost:3000' : '';
+const baseUrl = process.env.REACT_APP_API_BASE_URL || 'http://localhost:3000'; // Dynamically use the deployed URL or fallback to localhost
+
 // Function to open the modal
 function openModal() {
     document.getElementById('login-modal').classList.remove('hidden');
@@ -79,7 +80,7 @@ document.getElementById('login-form').addEventListener('submit', async function 
     const password = document.getElementById('password').value;
 
     try {
-        const response = await fetch('http://localhost:3000/auth/login', {
+        const response = await fetch('${baseUrl}/auth/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })
@@ -122,7 +123,7 @@ document.getElementById('register-form').addEventListener('submit', async functi
     const password = document.getElementById('reg-password').value;
 
     try {
-        const response = await fetch('http://localhost:3000/auth/register', {
+        const response = await fetch('${baseUrl}/auth/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, age, birthdate, phoneNumber, email, password })

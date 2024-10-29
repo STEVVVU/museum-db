@@ -1,5 +1,6 @@
 // Declare a global variable to hold the visitor ID
 let visitorID;
+const baseUrl = process.env.REACT_APP_API_BASE_URL || 'http://localhost:3000'; // Dynamically use the deployed URL or fallback to localhost
 
 // Function to check profile status (to be called on DOM load in each page)
 document.addEventListener('DOMContentLoaded', async function () {
