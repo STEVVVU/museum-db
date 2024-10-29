@@ -11,9 +11,10 @@ const port = process.env.PORT || 8080; // Use the Azure-provided port or default
 
 // Enable CORS for all routes with specific options to allow credentials
 app.use(cors({
-    origin: ['http://127.0.0.1:5500', 'http://localhost:5500'],
+    origin: '*',
     credentials: true
 }));
+
 
 // Middleware to parse cookies
 app.use(cookieParser());
